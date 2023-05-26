@@ -1,36 +1,39 @@
-shared:
-  ingress_domain: "ipillai_gitops_build.tapscale.cloudfocused.in"
 
-ceip_policy_disclosed: true
+tap_install:
+  values:
+    shared:
+      ingress_domain: "ipillai_gitops_build.tapscale.cloudfocused.in"
 
-#The above keys are minimum numbers of entries needed in tap-values.yaml to get a functioning TAP Full profile installation.
+    ceip_policy_disclosed: true
 
-# Below are the keys which may have default values set, but can be overridden.
+    #The above keys are minimum numbers of entries needed in tap-values.yaml to get a functioning TAP Full profile installation.
 
-profile: build # Can take iterate, build, run, view.
+    # Below are the keys which may have default values set, but can be overridden.
 
-supply_chain: basic # Can take testing, testing_scanning.
+    profile: build # Can take iterate, build, run, view.
 
-ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
-  registry:
-    server: tapscale.azurecr.io/ipillaigitops/build
-    repository: workload
+    supply_chain: basic # Can take testing, testing_scanning.
 
-contour:
-  envoy:
-    service:
-      type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
+    ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
+      registry:
+        server: tapscale.azurecr.io/ipillaigitops/build
+        repository: workload
 
-buildservice:
-  kp_default_repository: tapscale.azurecr.io/ipillaigitops/build/buildservice
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
 
-ootb_templates:
-  iaas_auth: true
+    buildservice:
+      kp_default_repository: tapscale.azurecr.io/ipillaigitops/build/buildservice
 
-# metadata_store:
-#   ns_for_export_app_cert: "MY-DEV-NAMESPACE" # Verify this namespace is available within your cluster before initiating the Tanzu Application Platform installation.
-#   app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+    ootb_templates:
+      iaas_auth: true
 
-scanning:
-  metadataStore:
-    url: "" # Configuration is moved, so set this string to empty.
+    # metadata_store:
+    #   ns_for_export_app_cert: "MY-DEV-NAMESPACE" # Verify this namespace is available within your cluster before initiating the Tanzu Application Platform installation.
+    #   app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+
+    scanning:
+      metadataStore:
+        url: "" # Configuration is moved, so set this string to empty.

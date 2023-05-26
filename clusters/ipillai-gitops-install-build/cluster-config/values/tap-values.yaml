@@ -12,9 +12,9 @@ tap_install:
 
     profile: build # Can take iterate, build, run, view.
 
-    supply_chain: basic # Can take testing, testing_scanning.
+    supply_chain: testing # Can take testing, testing_scanning.
 
-    ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
+    ootb_supply_chain_testing: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
       registry:
         server: tapscale.azurecr.io/ipillaigitops/build
         repository: workload
@@ -37,3 +37,12 @@ tap_install:
     scanning:
       metadataStore:
         url: "" # Configuration is moved, so set this string to empty.
+    namespace_provisioner:
+#  controller: "false"
+      additional_sources:
+  # Add templated java scan policy and tekton pipeline
+      - git:
+          ref: origin/scalability
+          subPath: namespace-provisioner-gitops-examples/custom-resources/testing-scanning-supplychain
+          url: https://github.com/jsabariganesh/application-accelerator-samples.git
+        path: _ytt_lib/testingscanning

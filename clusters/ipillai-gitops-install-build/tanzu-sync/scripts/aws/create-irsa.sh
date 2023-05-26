@@ -30,6 +30,7 @@ IAM_POLICY_NAME_FOR_TAP=${IAM_POLICY_NAME_FOR_TAP:-${EKS_CLUSTER_NAME}--read-tap
 IAM_ROLE_NAME_FOR_TANZU_SYNC=${IAM_ROLE_NAME_FOR_TANZU_SYNC:-${EKS_CLUSTER_NAME}--tanzu-sync-secrets}
 IAM_ROLE_NAME_FOR_TAP=${IAM_ROLE_NAME_FOR_TAP:-${EKS_CLUSTER_NAME}--tap-install-secrets}
 
+
 # TODO: replace with AWS CLI-based setup and skip the Service Account creation
 eksctl create iamserviceaccount \
   --name tanzu-sync-secrets \
